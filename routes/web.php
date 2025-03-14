@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::get('/login', [AuthController::class, 'create'])->name('login');
 
 Route::post('/login', [AuthController::class, 'store']);
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/clients/add', [ClientController::class, 'create'])->name('clients.create');
+    
+    Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
+});
