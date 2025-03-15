@@ -23,6 +23,17 @@
                     <a class="nav-link" href="{{ url('/about') }}">About</a>
                 </li>
             </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                @if (Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/logout') }}">Logout</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/login') }}">Login</a>
+                    </li>
+                @endif
+            </ul>
         </div>
     </div>
 </nav>
